@@ -146,6 +146,7 @@ img {
 	gap: 20px;
   
   
+  
 }
 .container-boton-volver{
   margin-top: 20px;
@@ -175,6 +176,7 @@ img {
 	object-fit: contain;
 	border-radius: 10px 10px 0 0;
 	transition: all 0.5s;
+  cursor: pointer;
 }
 
 
@@ -755,6 +757,7 @@ width: 40%;
 height: 100vh;
 
 
+
 }
 .imagenCargada{
   width: 100px;
@@ -768,6 +771,7 @@ height: 100vh;
   height: 200px;
   border: #000000 solid 2px;
   cursor: pointer;
+  background-color: #424242;
 }
 
 
@@ -820,10 +824,8 @@ height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
-  cursor: pointer;
-  align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+
   border: 2px dashed #cacaca;
   background-color: rgba(255, 255, 255, 1);
   padding: 1.5rem;
@@ -837,4 +839,189 @@ height: 100vh;
   justify-content: center;
 }
 
-/* botones  */
+.inputsSubirFoto {
+  border-radius: 10px;
+  outline: 2px solid #DFAF67;
+  border: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: #ffffff;
+  outline-offset: 3px;
+  padding: 5px 1rem;
+  transition: 0.25s;
+  width: 60%;
+  color: rgb(0, 0, 0);
+ 
+}
+
+.inputsSubirFoto::placeholder{
+  color: #000000;
+}
+.inputsSubirFoto:focus {
+  outline-offset: 5px;
+  background-color: #fff;
+  
+  
+}
+form p{
+  font-size: large;
+
+}
+
+/* tallas  */
+.radio-input input {
+  display: none;
+}
+
+.radio-input {
+  --container_width: 300px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-radius: 9999px;
+  background-color: #fff;
+  color: #000000;
+  width: var(--container_width);
+  overflow: hidden;
+  border: 1px solid rgba(53, 52, 52, 0.226);
+}
+
+.radio-input label {
+  width: 100%;
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  font-weight: 600;
+  letter-spacing: -1px;
+  font-size: 14px;
+}
+
+.selection {
+  display: none;
+  position: absolute;
+  height: 100%;
+  width: calc(var(--container_width) / 4);
+  z-index: 0;
+  left: 0;
+  top: 0;
+  transition: .15s ease;
+}
+
+.radio-input label:has(input:checked) {
+  color: #424242;
+}
+
+.radio-input label:has(input:checked) ~ .selection {
+  background-color: #DFAF67;
+  display: inline-block;
+}
+
+.radio-input label:nth-child(1):has(input:checked) ~ .selection {
+  transform: translateX(calc(var(--container_width) * 0/4));
+}
+
+.radio-input label:nth-child(2):has(input:checked) ~ .selection {
+  transform: translateX(calc(var(--container_width) * 1/4));
+}
+
+.radio-input label:nth-child(3):has(input:checked) ~ .selection {
+  transform: translateX(calc(var(--container_width) * 2/4));
+}
+
+.radio-input label:nth-child(4):has(input:checked) ~ .selection {
+  transform: translateX(calc(var(--container_width) * 3/4));
+}
+
+/* checkbox */
+.check_container {
+  position: relative;
+}
+
+.checkbox {
+  position: relative;
+  top: 1px;
+  width: 30px;
+  height: 30px;
+  border: 2px solid #DFAF67;
+  border-radius: 50px;
+  cursor: pointer;
+  display: block;
+  transition: all 0.3s linear;
+}
+
+.checkbox::after {
+  content: "";
+  position: absolute;
+  top: 25%;
+  left: 20%;
+  width: 6px;
+  height: 12px;
+  opacity: 0;
+  transform: rotate(45deg) scale(0) translate(-50%, -50%);
+  border-right: 4px solid #ffffff;
+  border-bottom: 4px solid #ffffff;
+  transition: all 0.3s linear;
+}
+
+#checkbox:checked ~ .checkbox::after {
+  opacity: 1 !important;
+  transform: rotate(50deg) scale(1) translate(20%, -25%) !important;
+}
+
+#checkbox:checked ~ .checkbox {
+  background: #DFAF67;
+  border: none;
+}
+
+.hidden {
+  display: none !important;
+}
+.containerCheckbox{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* boton crear */
+.botonCrear {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #DFAF67;
+  border: none;
+  color: #424242;
+  text-align: center;
+  font-size: 17px;
+  padding: 16px;
+  width: 130px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+ }
+ 
+ .botonCrear span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+ }
+ 
+.botonCrear span:after {
+  content: '»';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -15px;
+  transition: 0.5s;
+ }
+ 
+ .botonCrear:hover span {
+  padding-right: 15px;
+ }
+ 
+ .botonCrear:hover span:after {
+  opacity: 1;
+  right: 0;
+ }
