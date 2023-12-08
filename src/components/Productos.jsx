@@ -1,9 +1,13 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useState } from "react";
-import Menu from "../components/Menu";
+import ProductList from "./ListaProducto";
+import Encabezado from "./Encabezado";
 
 function Productos() {
+  const [allProducts, setAllProducts] = useState([]);
+  const [total, setTotal] = useState(0);
+  const [countProducts, setCountProducts] = useState(0);
   const Button = styled.button`
     border-top-left-radius: 1rem;
     border-bottom-left-radius: 1rem;
@@ -46,14 +50,14 @@ function Productos() {
               </li>
 
               <li>
-               <Link to={"/Productos"}>
-               <Button
-                  isSelected={selectedButton === 1}
-                  onClick={() => handleButtonClick(1)}
-                  className="boton-menu-carrito"
-                >
-                  Crear Diseño
-                </Button>
+                <Link to={"/Productos"}>
+                  <Button
+                    isSelected={selectedButton === 1}
+                    onClick={() => handleButtonClick(1)}
+                    className="boton-menu-carrito"
+                  >
+                    Crear Diseño
+                  </Button>
                 </Link>
               </li>
               <li>
@@ -68,9 +72,24 @@ function Productos() {
           </footer>
         </aside>
         <div className="contenedor-main">
-          <div id="contenedor-productos" className="contenedor-productos">
-            <h1>Crear Diseños</h1>
-          </div>
+          <h1>Crear Diseños</h1>
+
+          <Encabezado
+            allProducts={allProducts}
+            setAllProducts={setAllProducts}
+            total={total}
+            setTotal={setTotal}
+            countProducts={countProducts}
+            setCountProducts={setCountProducts}
+          />
+          <ProductList
+            allProducts={allProducts}
+            setAllProducts={setAllProducts}
+            total={total}
+            setTotal={setTotal}
+            countProducts={countProducts}
+            setCountProducts={setCountProducts}
+          />
         </div>
       </div>
     </div>

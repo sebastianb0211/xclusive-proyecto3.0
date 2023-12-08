@@ -61,7 +61,7 @@ const Header = () => {
                 </Button>
               </li>
               <li>
-                <Link to={"/Productos"} isSelected={selectedButton === 5} onClick={() => handleButtonClick(5)} className="boton-menu boton-categoria">
+                <Link to={"/Disenar"} isSelected={selectedButton === 5} onClick={() => handleButtonClick(5)} className="boton-menu boton-categoria">
                 Crear Productos 
                 </Link>
               </li>
