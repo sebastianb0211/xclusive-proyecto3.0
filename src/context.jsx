@@ -4,13 +4,18 @@ const MiContexto = createContext();
 
 export const ProveedorContexto = ({ children }) => {
   const [informacion, setInformacion] = useState(null);
+  const [productosCarrito,setCarrito] = useState(null);
+
 
   const establecerInformacion = (nuevaInformacion) => {
     setInformacion(nuevaInformacion);
   };
+  const establecerInformacionCarrito = (nuevaInformacionCarrito) => {
+    setCarrito(nuevaInformacionCarrito);
+  };
 
   return (
-    <MiContexto.Provider value={{ informacion, establecerInformacion }}>
+    <MiContexto.Provider value={{ informacion, establecerInformacion,productosCarrito,establecerInformacionCarrito }}>
       {children}
     </MiContexto.Provider>
   );

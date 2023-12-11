@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom"
 import styled from "styled-components"
 import { useState } from "react";
+import { usarContexto } from "../context";
 
 function Carrito() {
+  const { productosCarrito } = usarContexto();
     const Button = styled.button`
     border-top-left-radius: 1rem;
     border-bottom-left-radius: 1rem;
@@ -58,30 +60,13 @@ function Carrito() {
             Tu carrito está vacío. 
           </p>
 
-          <div id="carrito-productos" className="carrito-productos disabled">
-            {/* Aqui trabaj el esneider */}
-          </div>
+         
+            <p>nombre: {productosCarrito.nombre}</p>
+          
+         
+         
 
-          <div id="carrito-acciones" className="carrito-acciones disabled">
-            <div className="carrito-acciones-izquierda">
-              <button id="carrito-acciones-vaciar" className="carrito-acciones-vaciar">
-                Vaciar carrito
-              </button>
-            </div>
-            <div className="carrito-acciones-derecha">
-              <div className="carrito-acciones-total">
-                <p>Total:</p>
-                <p id="total">$3000</p>
-              </div>
-              <button id="carrito-acciones-comprar" className="carrito-acciones-comprar">
-                Comprar ahora
-              </button>
-            </div>
-          </div>
 
-          <p id="carrito-comprado" className="carrito-comprado disabled">
-            Muchas gracias por tu compra. 
-          </p>
         </div>
       </div>
     </div>
