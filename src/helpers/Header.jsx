@@ -2,9 +2,11 @@ import styled from "styled-components";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Menu from "../components/Menu";
+import { usarContexto } from '../context';
 
 
 const Header = () => {
+  const { numerito } = usarContexto();
     const Button = styled.button`
     border-top-left-radius: 1rem;
     border-bottom-left-radius: 1rem;
@@ -69,7 +71,7 @@ const Header = () => {
                 <Link to={"/Carrito"}><Carro isSelected={selectedButton === 6} onClick={() => handleButtonClick(6)} className="boton-menu boton-carrito">
                    Carrito{" "}
                   <span id="numerito" className="numerito">
-                    0
+                    {numerito}
                   </span>
                 </Carro></Link>
 

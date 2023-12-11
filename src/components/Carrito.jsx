@@ -1,77 +1,86 @@
-import { Link } from "react-router-dom"
-import styled from "styled-components"
-import { useState } from "react";
+import React from "react";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 import { usarContexto } from "../context";
+import { useState } from "react";
 
-function Carrito() {
+const Carrito = () => {
   const { productosCarrito } = usarContexto();
-    const Button = styled.button`
+
+  const Button = styled.button`
     border-top-left-radius: 1rem;
     border-bottom-left-radius: 1rem;
     position: relative;
-    background-color: ${(props) => (props.isSelected ? '#DFAF67' : '#424242')};
-    color: ${(props) => (props.isSelected ? 'white' : '#DFAF67')};
-    
-    
+    background-color: ${(props) => (props.isSelected ? "#DFAF67" : "#424242")};
+    color: ${(props) => (props.isSelected ? "white" : "#DFAF67")};
   `;
   const [selectedButton, setSelectedButton] = useState(1);
 
   const handleButtonClick = (button) => {
     setSelectedButton(button);
   };
-
-
   return (
     <div>
       <div className="wrapper">
-      <header className="header-mobile">
-        <h1 className="logo">Xclusive</h1>
-        <button className="open-menu" id="open-menu">
-        </button>
-      </header>
-      <aside>
-        <button className="close-menu" id="close-menu">
-        </button>
-        <header>
+        <header className="header-mobile">
           <h1 className="logo">Xclusive</h1>
+          <button className="open-menu" id="open-menu"></button>
         </header>
-        <nav>
-          <ul>
-            <li>
-              <Link to={"/Inicio"} className="boton-menu boton-volver" >
-                Seguir comprando
-              </Link>
-            </li>
-            <li>
-              <Button isSelected={selectedButton === 1} onClick={() => handleButtonClick(1)} className="boton-menu-carrito" >
-                 Carrito
-              </Button>
-            </li>
-          </ul>
-        </nav>
-        <footer>
-          <p className="texto-footer">© 2023 Xclusive</p>
-        </footer>
-      </aside>
-      <div className="contenedor-main">
-        <h2 className="titulo-principal">Carrito</h2>
-        <div className="contenedor-carrito">
-          <p id="carrito-vacio" className="carrito-vacio">
-            Tu carrito está vacío. 
-          </p>
+        <aside>
+          <button className="close-menu" id="close-menu"></button>
+          <header>
+            <h1 className="logo">Xclusive</h1>
+          </header>
+          <nav>
+            <ul>
+              <li>
+                <Link to={"/Inicio"} className="boton-menu boton-volver">
+                  Seguir comprando
+                </Link>
+              </li>
+              <li>
+                <Button
+                  isSelected={selectedButton === 1} onClick={() => handleButtonClick(1)}
+                  className="boton-menu-carrito"
+                >
+                  Carrito
+                </Button>
+              </li>
+            </ul>
+          </nav>
+          <footer>
+            <p className="texto-footer">© 2023 Xclusive</p>
+          </footer>
+        </aside>
+        <div className="contenedor-main">
+          <h2 className="titulo-principal">Carrito</h2>
+          <div className="contenedor-carrito">
+            <p id="carrito-vacio" className="carrito-vacio">
+              {productosCarrito.length === 0
+                ? "Tu carrito está vacío."
+                : "Productos en tu carrito:"}
+            </p>
 
-         
-            <p>nombre: {productosCarrito.nombre}</p>
-          
-         
-         
-
-
+            <div id="contenedor-productos" className="contenedor-productos">
+              {productosCarrito.map((producto) => (
+                <div key={producto.id}>
+                  <img
+                    className="producto-imagen"
+                    src={producto.imagen}
+                    alt={producto.titulo}
+                  />
+                  <div className="producto-detalles">
+                    <h3 className="producto-titulo">{producto.titulo}</h3>
+                    <p className="producto-precio">$ {producto.precio}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    </div>
-  )
-}
+  );
+};
 
-export default Carrito
+export default Carrito;

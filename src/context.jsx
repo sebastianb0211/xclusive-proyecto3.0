@@ -4,23 +4,24 @@ const MiContexto = createContext();
 
 export const ProveedorContexto = ({ children }) => {
   const [informacion, setInformacion] = useState(null);
-  const [productosCarrito,setCarrito] = useState(null);
-
+  const [productosCarrito, setProductosCarrito] = useState([]);
+  const [numerito, setNumerito] = useState(0);
 
   const establecerInformacion = (nuevaInformacion) => {
     setInformacion(nuevaInformacion);
   };
-  const establecerInformacionCarrito = (nuevaInformacionCarrito) => {
-    setCarrito(nuevaInformacionCarrito);
+
+  const agregarAlCarrito = (producto) => {
+    setProductosCarrito([...productosCarrito, producto]);
+    setNumerito(productosCarrito.length + 1);
   };
 
   return (
-    <MiContexto.Provider value={{ informacion, establecerInformacion,productosCarrito,establecerInformacionCarrito }}>
+    <MiContexto.Provider value={{ informacion, establecerInformacion, productosCarrito, agregarAlCarrito, numerito }}>
       {children}
     </MiContexto.Provider>
   );
 };
-
 
 export const usarContexto = () => {
   const context = useContext(MiContexto);
