@@ -181,27 +181,5 @@
       "precio": 1000
     }
   ],
-  "disenos": [
-    {
-      "id": 1,
-      "nombre": "proyecto1",
-      "talla": "s"
-    },
-    {
-      "nombre": "proyectoBoris",
-      "talla": "L",
-      "imagenActual": "src/assets/img/disenar/imagenCamibuso.png",
-      "imagenCargada": "blob:http://localhost:5173/616e0d3d-de85-4814-8e08-592a124f1f6a",
-      "precio": 70,
-      "id": 2
-    },
-    {
-      "nombre": "esneider es gay",
-      "talla": "L",
-      "imagenActual": "src/assets/img/disenar/imagenCamibuso.png",
-      "imagenCargada": null,
-      "precio": 70,
-      "id": 3
-    }
-  ]
+  "disenos": []
 }
