@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 
 const Carrito = () => {
   const { productosCarrito, setProductosCarrito } = usarContexto();
+  const{setNumerito} = usarContexto();
 
   const Button = styled.button`
     border-top-left-radius: 1rem;
@@ -20,14 +21,22 @@ const Carrito = () => {
   const handleButtonClick = (button) => {
     setSelectedButton(button);
   };
-  function EliminarProducto(id) {
-    const nuevosProductos = productosCarrito.filter(
-      (producto) => producto.id !== id
-    );
+  function EliminarProducto(index) {
+    
+    console.log(index);
+    const nuevosProductos = [...productosCarrito]
+    nuevosProductos.splice(index,1)
+    // const nuevosProductos = productosCarrito.filter(
+    //   (producto) => producto.id !== id
+      
+    // );
+    setNumerito(prev=>prev-1)
     setProductosCarrito(nuevosProductos);
   }
-  function ComprarProducto(id){
-    const productoComprado = productosCarrito.find((producto)=> producto.id === id)
+  function ComprarProducto(index){
+    const productosCarritoNuevo =  [...productosCarrito]
+    const productoComprado = productosCarritoNuevo.splice(index,1)[0]
+    console.log(productoComprado)
 
     Swal.fire({
       title: `¿Quieres comprar ${productoComprado.titulo} con precio ${productoComprado.precio} ?`,
@@ -39,10 +48,9 @@ const Carrito = () => {
       cancelButtonText: "Cancelar",
     }).then((result) => {
       if (result.isConfirmed) {
-        const nuevosProductos = productosCarrito.filter(
-          (producto) => producto.id !== id
-        );
-        setProductosCarrito(nuevosProductos);
+        
+        setProductosCarrito(productosCarritoNuevo);
+        setNumerito(prev=>prev-1)
   
         Swal.fire("¡Compra exitosa!", `${productoComprado.titulo} se ha comprado.`, "success");
       }
@@ -100,8 +108,8 @@ const Carrito = () => {
             </p>
 
             <div id="contenedor-productos" className="contenedor-productos">
-              {productosCarrito.map((producto) => (
-                <div key={producto.id}>
+              {productosCarrito.map((producto, index) => (
+                <div key={index} >
                   <img
                     className="producto-imagen"
                     src={producto.imagen}
@@ -112,12 +120,12 @@ const Carrito = () => {
                     <p className="producto-precio">$ {producto.precio}</p>
                     <div className="botones-carrito">
                       <button
-                        onClick={() => EliminarProducto(producto.id)}
+                        onClick={() => EliminarProducto(index)}
                         className="producto-agregar"
                       >
                         eliminar
                       </button>
-                      <button className="producto-agregar" onClick={() => ComprarProducto(producto.id)} >Comprar</button>
+                      <button className="producto-agregar" onClick={() => ComprarProducto(index)} >Comprar</button>
                     </div>
                   </div>
                 </div>

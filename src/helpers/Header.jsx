@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Menu from "../components/Menu";
 import { usarContexto } from '../context';
@@ -16,6 +16,9 @@ const Header = () => {
     
     
   `;
+  useEffect(()=>{},[])
+
+ 
   
   const Carro = styled.a`
   border-top-left-radius: 1rem;
@@ -45,6 +48,7 @@ const Header = () => {
           <button
             className="close-menu"
             id="close-menu"
+            type="button"
           >
             
           </button>
@@ -58,6 +62,7 @@ const Header = () => {
                 <Button isSelected={selectedButton === 1} onClick={() => handleButtonClick(1)}
                   id="todos"
                   className="boton-menu boton-categoria active"
+                  type="button"
                 >
                 productos
                 </Button>
@@ -66,17 +71,18 @@ const Header = () => {
                 <Link to={"/misDiseños"} isSelected={selectedButton === 2} onClick={() => handleButtonClick(2)}
                   id="todos"
                   className="boton-menu boton-categoria active"
+                  type="button"
                 >
                 Mis Diseños
                 </Link>
               </li>
               <li>
-                <Link to={"/Disenar"} isSelected={selectedButton === 3} onClick={() => handleButtonClick(3)} className="boton-menu boton-categoria">
+                <Link to={"/Disenar"} isSelected={selectedButton === 3} onClick={() => handleButtonClick(3)} className="boton-menu boton-categoria" type="button">
                 Diseñar Productos 
                 </Link>
               </li>
               <li>
-                <Link to={"/Carrito"}><Carro isSelected={selectedButton === 4} onClick={() => handleButtonClick(4)} className="boton-menu boton-carrito">
+                <Link to={"/Carrito"}><Carro isSelected={selectedButton === 4} onClick={() => handleButtonClick(4)} className="boton-menu boton-carrito" type="button">
                    Carrito{" "}
                   <span id="numerito" className="numerito">
                     {numerito}

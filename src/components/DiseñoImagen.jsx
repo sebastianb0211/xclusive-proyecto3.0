@@ -131,7 +131,7 @@ const DiseñoImagen = () => {
             style={{ border: `3px solid ${bordeColorTrasera}` }}
           />
           <Link to={"/disenar"}>
-            <button className="volverDiseñar">Volver</button>
+            <button type="button" className="volverDiseñar">Volver</button>
           </Link>
         </div>
       </div>

@@ -39,8 +39,8 @@ function MisDiseños() {
           .then((response) => {
             if (response.status === 200) {
               Swal.fire(
-                "Eliminado",
-                "El diseño se ha eliminado correctamente.",
+                "Comprado correctamente",
+                "su diseño se enviara en los proximos 3 dias.",
                 "success"
               );
 
@@ -112,9 +112,11 @@ function MisDiseños() {
           <button className="open-menu" id="open-menu"></button>
         </header>
         <aside>
+          
           <button className="close-menu" id="close-menu"></button>
           <header>
             <h1 className="logo">Xclusive</h1>
+            <img className="logo-crear-productos" src="src/assets/img/logo-pagina (2).png" alt="" />
           </header>
           <nav>
             <ul>
@@ -142,26 +144,20 @@ function MisDiseños() {
           <div className="contenedor-productos">
             {disenos.map((diseno) => (
               <section key={diseno.id}>
-                <img className="producto-imagen" src={diseno.imagenActual} />
-                <div className="producto-detalles">
+                <img className="producto-imagen" src={diseno.imagenActual} alt="" />
+                <img
+                  className="imagenCargadaDiseno"
+                  src={diseno.imagenCargada}
+                  alt=""
+                />
+                <div className="producto-detallesDiseno">
                   <h3 className="producto-titulo">{diseno.nombre}</h3>
-                  <p className="producto-precio">Talla:{diseno.talla}</p>
-                  <p className="producto-precio">${diseno.precio} dolares</p>
+                  <p className="producto-precio">Talla: {diseno.talla}</p>
+                  <p className="producto-precio">${diseno.precio} dólares</p>
                   <div className="botones-carrito">
-                    <button
-                      className="producto-agregar"
-                      onClick={() => EliminarProducto(diseno.id)}
-                    >
-                      eliminar
-                    </button>
-                    <button
-                      className="producto-agregar"
-                      onClick={() => ComprarProducto(diseno.id)}
-                    >
-                      Comprar
-                    </button>
+                    <button  onClick={() => EliminarProducto(diseno.id)} className="producto-agregar">Eliminar</button>
+                    <button  onClick={() => ComprarProducto(diseno.id)} className="producto-agregar">Comprar</button>
                   </div>
-                
                 </div>
               </section>
             ))}
