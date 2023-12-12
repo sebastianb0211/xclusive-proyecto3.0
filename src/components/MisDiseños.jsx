@@ -64,13 +64,19 @@ function MisDiseños() {
         
         {disenos.map((diseno)=>(
           <section key={diseno.id}>
-           <img className="producto-imagen"   />
+           <img className="producto-imagen" src={diseno.imagenActual}  />
             <div className="producto-detalles">
               <h3 className="producto-titulo">{diseno.nombre}</h3>
-              <p className="producto-precio">$</p>
-              <button className="producto-agregar">
-                Comprar
-              </button>
+              <p className="producto-precio">Talla:{diseno.talla}</p>
+              <p className="producto-precio">${diseno.precio} dolares</p>
+              <div  className="botones-carrito">
+              <button  className="producto-agregar">eliminar</button>
+                <button  className="producto-agregar">Comprar</button>
+
+
+              </div>
+             
+              
             </div>
 
           </section>

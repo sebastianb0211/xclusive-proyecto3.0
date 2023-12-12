@@ -556,6 +556,7 @@ aside {
 .producto-imagen {
   max-width: 100%;
   border-radius: 1rem;
+  background-color: white;
 }
 .producto-imagen:hover{
   transform: scale(1.08);

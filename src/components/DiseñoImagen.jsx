@@ -61,7 +61,11 @@ const DiseñoImagen = () => {
   async function subirDiseño() {
     
       await axios.post('http://localhost:3001/disenos', {
-         nombre
+        nombre: nombre,
+        talla: talla,
+        imagenActual: imagenActual,
+        imagenCargada: imagenCargada ? URL.createObjectURL(imagenCargada) : null,
+        precio:informacion.price+20
         
       });
      
