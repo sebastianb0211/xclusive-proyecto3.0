@@ -1,10 +1,22 @@
 
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState,useEffect } from "react";
+import axios from "axios";
 
 
 function MisDiseños() {
+  const [disenos, setDisenos] = useState([]);
+
+  const mostrarDisenos = async () => {
+    let listadoDisenos = await axios.get('http://localhost:3001/disenos');
+    setDisenos(listadoDisenos.data);
+  };
+
+  useEffect(() => {
+    mostrarDisenos();
+  }, []);
+
     const Button = styled.button`
     border-top-left-radius: 1rem;
     border-bottom-left-radius: 1rem;
@@ -47,8 +59,22 @@ function MisDiseños() {
         </footer>
       </aside>
       <div className="contenedor-main">
-      <div className="contenedor-carrito">
-        <h1>Mis diseños</h1>
+      
+      <div className="contenedor-productos">
+        
+        {disenos.map((diseno)=>(
+          <section key={diseno.id}>
+           <img className="producto-imagen"   />
+            <div className="producto-detalles">
+              <h3 className="producto-titulo">{diseno.nombre}</h3>
+              <p className="producto-precio">$</p>
+              <button className="producto-agregar">
+                Comprar
+              </button>
+            </div>
+
+          </section>
+        ))}
       </div>
       </div>
       </div>
