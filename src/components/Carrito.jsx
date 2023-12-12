@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { usarContexto } from "../context";
 import { useState } from "react";
+import Swal from "sweetalert2";
 
 const Carrito = () => {
   const { productosCarrito, setProductosCarrito } = usarContexto();
- 
 
   const Button = styled.button`
     border-top-left-radius: 1rem;
@@ -21,9 +21,34 @@ const Carrito = () => {
     setSelectedButton(button);
   };
   function EliminarProducto(id) {
-    const nuevosProductos = productosCarrito.filter((producto) => producto.id !== id);
+    const nuevosProductos = productosCarrito.filter(
+      (producto) => producto.id !== id
+    );
     setProductosCarrito(nuevosProductos);
+  }
+  function ComprarProducto(id){
+    const productoComprado = productosCarrito.find((producto)=> producto.id === id)
+
+    Swal.fire({
+      title: `¿Quieres comprar ${productoComprado.titulo} con precio ${productoComprado.precio} ?`,
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Sí, comprar",
+      cancelButtonText: "Cancelar",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Elimina el producto del carrito
+        const nuevosProductos = productosCarrito.filter(
+          (producto) => producto.id !== id
+        );
+        setProductosCarrito(nuevosProductos);
   
+        // Muestra una alerta de éxito
+        Swal.fire("¡Compra exitosa!", `${productoComprado.titulo} se ha comprado.`, "success");
+      }
+    });
   }
   return (
     <div>
@@ -46,13 +71,22 @@ const Carrito = () => {
               </li>
               <li>
                 <Button
-                  isSelected={selectedButton === 1} onClick={() => handleButtonClick(1)}
+                  isSelected={selectedButton === 1}
+                  onClick={() => handleButtonClick(1)}
                   className="boton-menu-carrito"
                 >
                   Carrito
                 </Button>
               </li>
             </ul>
+            <ul>
+              <li>
+                <Link>
+                  
+                </Link>
+              </li>
+            </ul>
+
           </nav>
           <footer>
             <p className="texto-footer">© 2023 Xclusive</p>
@@ -79,12 +113,15 @@ const Carrito = () => {
                     <h3 className="producto-titulo">{producto.titulo}</h3>
                     <p className="producto-precio">$ {producto.precio}</p>
                     <div className="botones-carrito">
-                  <button onClick={()=> EliminarProducto(producto.id)} className="producto-agregar">eliminar</button>
-                  <button  className="producto-agregar">Comprar</button>
+                      <button
+                        onClick={() => EliminarProducto(producto.id)}
+                        className="producto-agregar"
+                      >
+                        eliminar
+                      </button>
+                      <button className="producto-agregar" onClick={() => ComprarProducto(producto.id)} >Comprar</button>
                     </div>
                   </div>
-                  
-                 
                 </div>
               ))}
             </div>
