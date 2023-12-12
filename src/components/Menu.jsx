@@ -7,7 +7,7 @@ const Menu = () => {
   const [productos, setProductos] = useState([]);
 
   const mostrarProductos = async () => {
-    let listadoProductos = await axios.get('http://localhost:3002/productos');
+    let listadoProductos = await axios.get('http://localhost:3001/productos');
     setProductos(listadoProductos.data);
   };
 

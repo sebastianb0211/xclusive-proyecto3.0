@@ -180,5 +180,21 @@
             },
             "precio": 1000
         }
+    ],
+    "diseños":[
+        {
+            "id":1,
+            "nombre":"proyecto1",
+            "talla":"s"
+
+
+
+        },
+        {
+            
+        }
+
     ]
+
+    
 }

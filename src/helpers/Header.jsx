@@ -63,12 +63,20 @@ const Header = () => {
                 </Button>
               </li>
               <li>
-                <Link to={"/Disenar"} isSelected={selectedButton === 5} onClick={() => handleButtonClick(5)} className="boton-menu boton-categoria">
-                Crear Productos 
+                <Link to={"/misDiseños"} isSelected={selectedButton === 2} onClick={() => handleButtonClick(2)}
+                  id="todos"
+                  className="boton-menu boton-categoria active"
+                >
+                Mis Diseños
                 </Link>
               </li>
               <li>
-                <Link to={"/Carrito"}><Carro isSelected={selectedButton === 6} onClick={() => handleButtonClick(6)} className="boton-menu boton-carrito">
+                <Link to={"/Disenar"} isSelected={selectedButton === 3} onClick={() => handleButtonClick(3)} className="boton-menu boton-categoria">
+                Diseñar Productos 
+                </Link>
+              </li>
+              <li>
+                <Link to={"/Carrito"}><Carro isSelected={selectedButton === 4} onClick={() => handleButtonClick(4)} className="boton-menu boton-carrito">
                    Carrito{" "}
                   <span id="numerito" className="numerito">
                     {numerito}

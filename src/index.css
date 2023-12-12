@@ -546,6 +546,11 @@ aside {
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
 }
+.botones-carrito{
+  
+  display: flex;
+  justify-content: space-around;
+ }
 
 .producto-imagen {
   max-width: 100%;
@@ -592,6 +597,7 @@ aside {
   background-color: var(--clr-main);
   color: var(--clr-white);
 }
+
 
 
 /* CARRITO */

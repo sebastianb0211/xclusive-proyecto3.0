@@ -5,6 +5,7 @@ import Productos from "../components/Productos"
 import Abrigos from "../components/Abrigos";
 import DisenarProducto from "../components/DisenarProducto";
 import DiseñoImagen from "../components/DiseñoImagen";
+import MisDiseños from "../components/MisDiseños";
 
 export let rutas = [
   {
@@ -35,5 +36,9 @@ export let rutas = [
     path: "/disenoImagen",
     element: <DiseñoImagen/>
   },
+  {
+    path:"/misDiseños",
+    element: <MisDiseños/>
+  }
   
 ];

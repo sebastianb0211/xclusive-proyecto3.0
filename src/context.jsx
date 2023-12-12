@@ -17,7 +17,7 @@ export const ProveedorContexto = ({ children }) => {
   };
 
   return (
-    <MiContexto.Provider value={{ informacion, establecerInformacion, productosCarrito, agregarAlCarrito, numerito }}>
+    <MiContexto.Provider value={{ informacion, establecerInformacion, productosCarrito,setProductosCarrito, agregarAlCarrito, numerito }}>
       {children}
     </MiContexto.Provider>
   );

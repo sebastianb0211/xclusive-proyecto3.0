@@ -1,9 +1,12 @@
 import React, { useState, useRef } from "react";
 import { usarContexto } from "../context";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const DiseñoImagen = () => {
-  const { informacion } = usarContexto();
+  const { informacion } = usarContexto("");
   const [imagenActual, setImagenActual] = useState(informacion?.img || "");
   const [imagenCargada, setImagenCargada] = useState(null);
   const inputDelanteraRef = useRef(null);
@@ -12,7 +15,9 @@ const DiseñoImagen = () => {
   const [bordeColorTrasera, setBordeColorTrasera] = useState("#cacaca");
   const [talla, setTalla] = useState(""); // Estado para la talla
   const [checkedCheckbox, setCheckedCheckbox] = useState(false);
+  const [nombre,setNombre]= useState('')
 
+  let redireccion = useNavigate();
   const cambiarImagen = (nuevaImagen, lado) => {
     setImagenActual(nuevaImagen);
     if (lado === "delantera") {
@@ -52,6 +57,40 @@ const DiseñoImagen = () => {
   const handleCheckboxChange = () => {
     setCheckedCheckbox(!checkedCheckbox);
   };
+
+  async function subirDiseño() {
+    
+      await axios.post('http://localhost:3001/diseños', {
+        nombre: nombre,
+        
+      });
+     
+    
+  }
+  function agregarDiseño(){
+    
+    Swal.fire({
+      title: "Estas seguro que deseas crear tu nuevo diseño?",
+      text: "luego podra eliminar tu diseño",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Si crear diseño"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        subirDiseño()
+        redireccion('/misDiseños')
+        Swal.fire({
+          title: "Creado",
+          text: "Tu diseño  ha sido creada.",
+          icon: "success",
+          confirmButtonColor:"green"
+          
+        });
+      }
+    });
+  }
 
   return (
     <div className="containerDisenarImagen">
@@ -102,7 +141,7 @@ const DiseñoImagen = () => {
       <div className="containerFormularioSubir">
         <form className="formularioSubir">
           <h1>Crear tu diseño</h1>
-          <input
+          <input onChange={(e)=>setNombre(e.target.value)}
             className="inputsSubirFoto"
             type="text"
             placeholder="Nombre de tu proyecto: "
@@ -193,7 +232,7 @@ const DiseñoImagen = () => {
             nuestra página web. Diseña a medida con una amplia variedad de
             telas, colores y estilos. ¡Crea tu estilo único hoy mismo!
           </p>
-          <button className="botonCrear" type="button">
+          <button onClick={agregarDiseño} className="botonCrear" type="button">
             <span>Crear</span>
           </button>
         </form>

@@ -5,7 +5,8 @@ import { usarContexto } from "../context";
 import { useState } from "react";
 
 const Carrito = () => {
-  const { productosCarrito } = usarContexto();
+  const { productosCarrito, setProductosCarrito } = usarContexto();
+ 
 
   const Button = styled.button`
     border-top-left-radius: 1rem;
@@ -19,6 +20,11 @@ const Carrito = () => {
   const handleButtonClick = (button) => {
     setSelectedButton(button);
   };
+  function EliminarProducto(id) {
+    const nuevosProductos = productosCarrito.filter((producto) => producto.id !== id);
+    setProductosCarrito(nuevosProductos);
+  
+  }
   return (
     <div>
       <div className="wrapper">
@@ -72,7 +78,13 @@ const Carrito = () => {
                   <div className="producto-detalles">
                     <h3 className="producto-titulo">{producto.titulo}</h3>
                     <p className="producto-precio">$ {producto.precio}</p>
+                    <div className="botones-carrito">
+                  <button onClick={()=> EliminarProducto(producto.id)} className="producto-agregar">eliminar</button>
+                  <button  className="producto-agregar">Comprar</button>
+                    </div>
                   </div>
+                  
+                 
                 </div>
               ))}
             </div>
