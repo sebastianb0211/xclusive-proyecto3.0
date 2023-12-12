@@ -60,8 +60,8 @@ const DiseñoImagen = () => {
 
   async function subirDiseño() {
     
-      await axios.post('http://localhost:3001/diseños', {
-        nombre: nombre,
+      await axios.post('http://localhost:3001/disenos', {
+         nombre
         
       });
      
