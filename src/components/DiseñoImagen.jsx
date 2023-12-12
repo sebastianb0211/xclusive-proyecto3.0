@@ -13,11 +13,12 @@ const DiseñoImagen = () => {
   const inputTraseraRef = useRef(null);
   const [bordeColorDelantera, setBordeColorDelantera] = useState("#cacaca");
   const [bordeColorTrasera, setBordeColorTrasera] = useState("#cacaca");
-  const [talla, setTalla] = useState(""); // Estado para la talla
+  const [talla, setTalla] = useState("");
   const [checkedCheckbox, setCheckedCheckbox] = useState(false);
-  const [nombre,setNombre]= useState('')
+  const [nombre, setNombre] = useState('');
 
   let redireccion = useNavigate();
+  
   const cambiarImagen = (nuevaImagen, lado) => {
     setImagenActual(nuevaImagen);
     if (lado === "delantera") {
@@ -54,43 +55,39 @@ const DiseñoImagen = () => {
       inputTraseraRef.current.value = "";
     }
   };
+
   const handleCheckboxChange = () => {
     setCheckedCheckbox(!checkedCheckbox);
   };
 
   async function subirDiseño() {
-    
-      await axios.post('http://localhost:3001/disenos', {
-        nombre: nombre,
-        talla: talla,
-        imagenActual: imagenActual,
-        imagenCargada: imagenCargada ? URL.createObjectURL(imagenCargada) : null,
-        precio:informacion.price+20
-        
-      });
-     
-    
+    await axios.post('http://localhost:3001/disenos', {
+      nombre: nombre,
+      talla: talla,
+      imagenActual: imagenActual,
+      imagenCargada: imagenCargada ? URL.createObjectURL(imagenCargada) : null,
+      precio: informacion.price + 20
+    });
   }
-  function agregarDiseño(){
-    
+
+  function agregarDiseño() {
     Swal.fire({
-      title: "Estas seguro que deseas crear tu nuevo diseño?",
-      text: "luego podra eliminar tu diseño",
+      title: "¿Estás seguro de que deseas crear tu nuevo diseño?",
+      text: "Luego podrás eliminar tu diseño",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Si crear diseño"
+      confirmButtonText: "Sí, crear diseño"
     }).then((result) => {
       if (result.isConfirmed) {
-        subirDiseño()
-        redireccion('/misDiseños')
+        subirDiseño();
+        redireccion('/misDiseños');
         Swal.fire({
           title: "Creado",
-          text: "Tu diseño  ha sido creada.",
+          text: "Tu diseño ha sido creado.",
           icon: "success",
-          confirmButtonColor:"green"
-          
+          confirmButtonColor: "green"
         });
       }
     });
@@ -115,26 +112,22 @@ const DiseñoImagen = () => {
         <div className="containerFotitos">
           <div>
             <h1>{informacion.nombre} </h1>
-            <h2>${informacion.price + 20} dolares</h2>
-            <p>$20 dolares extras </p>
+            <h2>${informacion.price + 20} dólares</h2>
+            <p>$20 dólares extras </p>
           </div>
 
           <img
             className="imagenpequenita"
             src={informacion.img}
             alt=""
-            onClick={() => {
-              cambiarImagen(informacion?.img, "delantera");
-            }}
+            onClick={() => cambiarImagen(informacion?.img, "delantera")}
             style={{ border: `3px solid ${bordeColorDelantera}` }}
           />
           <img
             className="imagenpequenita"
             src={informacion.imgBack}
             alt=""
-            onClick={() => {
-              cambiarImagen(informacion?.imgBack, "trasera");
-            }}
+            onClick={() => cambiarImagen(informacion?.imgBack, "trasera")}
             style={{ border: `3px solid ${bordeColorTrasera}` }}
           />
           <Link to={"/disenar"}>
@@ -145,7 +138,7 @@ const DiseñoImagen = () => {
       <div className="containerFormularioSubir">
         <form className="formularioSubir">
           <h1>Crear tu diseño</h1>
-          <input onChange={(e)=>setNombre(e.target.value)}
+          <input onChange={(e) => setNombre(e.target.value)}
             className="inputsSubirFoto"
             type="text"
             placeholder="Nombre de tu proyecto: "
@@ -230,7 +223,6 @@ const DiseñoImagen = () => {
               <label className="checkbox" htmlFor="checkbox" />
             </div>
           </div>
-
           <p>
             Explora la experiencia única de personalización de camisas en
             nuestra página web. Diseña a medida con una amplia variedad de

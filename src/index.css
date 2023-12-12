@@ -557,6 +557,8 @@ aside {
   max-width: 100%;
   border-radius: 1rem;
   background-color: white;
+  position: relative;
+ 
 }
 .producto-imagen:hover{
   transform: scale(1.08);
@@ -567,12 +569,40 @@ aside {
   cursor: pointer;
 }
 
+                  
+.imagenCargadaDiseno{
+
+height: 100px;
+width: 100px;
+object-fit: contain;
+z-index: 10;
+position:relative;
+left: 25%;
+top: -160px;
+}
+.imagenCargadaDiseno:hover{
+  transform: scale(1.08);
+  
+  cursor: pointer;
+}
+
 .producto-detalles {
   background-color: var(--clr-main);
   color: var(--clr-white);
   padding: .5rem;
   border-radius: 1rem;
   margin-top: -2rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+}
+.producto-detallesDiseno{
+  background-color: var(--clr-main);
+  color: var(--clr-white);
+  padding: .5rem;
+  border-radius: 1rem;
+  margin-top: -8rem;
   position: relative;
   display: flex;
   flex-direction: column;
