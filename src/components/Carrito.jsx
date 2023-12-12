@@ -39,13 +39,11 @@ const Carrito = () => {
       cancelButtonText: "Cancelar",
     }).then((result) => {
       if (result.isConfirmed) {
-        // Elimina el producto del carrito
         const nuevosProductos = productosCarrito.filter(
           (producto) => producto.id !== id
         );
         setProductosCarrito(nuevosProductos);
   
-        // Muestra una alerta de éxito
         Swal.fire("¡Compra exitosa!", `${productoComprado.titulo} se ha comprado.`, "success");
       }
     });
