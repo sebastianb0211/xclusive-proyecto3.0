@@ -293,7 +293,10 @@ form {
   align-items: center;
   transform-style: preserve-3d;
   transition: all 1s ease;
-  
+}
+.form img{
+  width: 50%;
+  height: 50%;
 }
 .error{
   color: red;
@@ -1070,4 +1073,8 @@ form p{
  .botonCrear:hover span:after {
   opacity: 1;
   right: 0;
+ }
+ .cerrarSesion{
+  background-color: #424242;
+  border: none;
  }

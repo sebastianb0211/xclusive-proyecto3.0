@@ -8,7 +8,7 @@
         "nombre": "Abrigos",
         "id": "abrigos"
       },
-      "precio":50
+      "precio": 50
     },
     {
       "id": "abrigo-02",
@@ -18,7 +18,7 @@
         "nombre": "Abrigos",
         "id": "abrigos"
       },
-      "precio":50
+      "precio": 50
     },
     {
       "id": "abrigo-03",
@@ -28,7 +28,7 @@
         "nombre": "Abrigos",
         "id": "abrigos"
       },
-      "precio":50
+      "precio": 50
     },
     {
       "id": "abrigo-04",
@@ -38,7 +38,7 @@
         "nombre": "Abrigos",
         "id": "abrigos"
       },
-      "precio":50
+      "precio": 50
     },
     {
       "id": "abrigo-05",
@@ -48,7 +48,7 @@
         "nombre": "Abrigos",
         "id": "abrigos"
       },
-      "precio":50
+      "precio": 50
     },
     {
       "id": "camiseta-01",
@@ -58,7 +58,7 @@
         "nombre": "Camisetas",
         "id": "camisetas"
       },
-      "precio":50
+      "precio": 50
     },
     {
       "id": "camiseta-02",
@@ -68,7 +68,7 @@
         "nombre": "Camisetas",
         "id": "camisetas"
       },
-      "precio":50
+      "precio": 50
     },
     {
       "id": "camiseta-03",
@@ -78,7 +78,7 @@
         "nombre": "Camisetas",
         "id": "camisetas"
       },
-      "precio":50
+      "precio": 50
     },
     {
       "id": "camiseta-04",
@@ -88,7 +88,7 @@
         "nombre": "Camisetas",
         "id": "camisetas"
       },
-      "precio":50
+      "precio": 50
     },
     {
       "id": "camiseta-05",
@@ -98,7 +98,7 @@
         "nombre": "Camisetas",
         "id": "camisetas"
       },
-      "precio":50
+      "precio": 50
     },
     {
       "id": "camiseta-06",
@@ -108,7 +108,7 @@
         "nombre": "Camisetas",
         "id": "camisetas"
       },
-      "precio":50
+      "precio": 50
     },
     {
       "id": "camiseta-07",
@@ -118,7 +118,7 @@
         "nombre": "Camisetas",
         "id": "camisetas"
       },
-      "precio":50
+      "precio": 50
     },
     {
       "id": "camiseta-08",
@@ -128,7 +128,7 @@
         "nombre": "Camisetas",
         "id": "camisetas"
       },
-      "precio":50
+      "precio": 50
     },
     {
       "id": "pantalon-01",
@@ -138,7 +138,7 @@
         "nombre": "Pantalones",
         "id": "pantalones"
       },
-      "precio":50
+      "precio": 50
     },
     {
       "id": "pantalon-02",
@@ -148,7 +148,7 @@
         "nombre": "Pantalones",
         "id": "pantalones"
       },
-      "precio":50
+      "precio": 50
     },
     {
       "id": "pantalon-03",
@@ -158,7 +158,7 @@
         "nombre": "Pantalones",
         "id": "pantalones"
       },
-      "precio":50
+      "precio": 50
     },
     {
       "id": "pantalon-04",
@@ -168,7 +168,7 @@
         "nombre": "Pantalones",
         "id": "pantalones"
       },
-      "precio":50
+      "precio": 50
     },
     {
       "id": "pantalon-05",
@@ -178,8 +178,16 @@
         "nombre": "Pantalones",
         "id": "pantalones"
       },
-      "precio":50
+      "precio": 50
     }
   ],
-  "disenos": []
+  "disenos": [],
+  "usuarios": [
+    {
+      "username": "Boris",
+      "email": "b@gmail.com",
+      "password": "12345678",
+      "id": 1
+    }
+  ]
 }
