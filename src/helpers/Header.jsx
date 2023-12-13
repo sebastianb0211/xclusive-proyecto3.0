@@ -1,12 +1,15 @@
 import styled from "styled-components";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Menu from "../components/Menu";
 import { usarContexto } from '../context';
+import Swal from 'sweetalert2';
 
 
 const Header = () => {
   const { numerito } = usarContexto();
+  const navegacion = useNavigate()
+
     const Button = styled.button`
     border-top-left-radius: 1rem;
     border-bottom-left-radius: 1rem;
@@ -35,6 +38,23 @@ const Header = () => {
   const handleButtonClick = (button) => {
     setSelectedButton(button);
   };
+
+  const cerrarSesion = () => {
+    Swal.fire({
+      title: '¿Quieres cerrar sesión?',
+      text: '¿Estás seguro?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, cerrar sesión',
+      cancelButtonText: 'Cancelar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        navegacion('/');
+      }
+    });
+  };
   return (
 
     <div className="wrapper">
@@ -54,7 +74,9 @@ const Header = () => {
           </button>
           <header>
             <h1 className="logo">Xclusive</h1>
+            <button className="cerrarSesion" onClick={cerrarSesion}>
             <img className="logo-crear-productos" src="src/assets/img/logo-pagina (2).png" alt="" />
+            </button>
           </header>
           <nav>
             <ul className="menu">
